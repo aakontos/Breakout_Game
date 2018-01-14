@@ -1,0 +1,26 @@
+1. A variant of Breakout that I found interesting is the Worms Breakout game. I think that the abundance of power-ups
+    changes the game's dynamic quite a lot. With so much going on at a time the player has to decide between getting
+    the power-up and potentially losing the ball, or not taking the risk and I think that is really cool.
+
+2. I want to try to make a version of Breakout that has blocks in a layout that will allow for the ball to bounce a
+    significant amount around to drop a lot of power-ups similar to the Worms game but instead of by breaking blocks
+    they'll drop the more frequently the balls continuously bounce between the blocks without hitting the paddle.
+    This would look like a lot of blocks on the bottom with less near the top of the screen so that the ball can bounce
+    back and forth from the top of the screen down to the blocks a lot. As the levels go on it will be harder to keep
+    the ball bouncing as many times as more holes will open up in the bottom layer of blocks.
+
+3. There will be blocks that break instantly, some that break after being hit multiple times, with the number of hits
+    to break the block on the block itself, and then some blocks that will break with a continuous string of hits
+    (there will be a combo counter in the corner that will let the player know how close they are.
+
+4. I want to create a multiple ball power-up, one that makes the paddle double in size, one that makes the paddle bounce
+    the ball faster than normal, and then one that makes the bottom of the screen not drop the ball for a little bit of
+    time.
+
+5. I'll have cheat keys to put me on each level, but then also cheat keys to make sure that the combo counter is working
+    as intended so that if the player gets up to the correct number of hits the blocks will break correctly.
+
+6. I've already mentioned it before but the things that is unique I intend to put into the game is that combo counter of
+    continuous bounces that will be hard to hard to keep up but as the player gets a higher and higher combo they will
+    get not only significantly more points but also blocks will break faster. I think that this is substantial because
+    it adds another layer of skill into the game of breakout which is fairly linear normally.
