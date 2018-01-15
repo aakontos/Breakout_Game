@@ -19,11 +19,16 @@ import javafx.util.Duration;
 
 public class Breakout extends Application {
     public static final String TITLE = "Breakout Game";
-    public static final String PADDLE_IMG = "";
-    public static final String BALL_IMG = "";
+    public static final int SIZE = 400;
+    public static final int MS_DELAY = 1000 / FPS;
+    public static final double SECOND_DELAY = 1.0 / FPS;
+    public static final Paint BACKGROUND = Color.LAVENDER;
+    public static final Paint HIGHLIGHT = Color.BLUE;
+    public static final String PADDLE_IMG = "images/paddle.gif";
+    public static final String BALL_IMG = "images/ball.gif";
     public static final String BACKGROUND_IMG = "";
-    public static final int HEIGHT = 400;
-    public static final int WIDTH = 400;
+    public static int BALL_VEL_X = 30;
+    public static int BALL_VEL_Y = 30;
     public static final int FPS = 60;
 
 
