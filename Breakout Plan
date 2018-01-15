@@ -20,7 +20,16 @@
 5. I'll have cheat keys to put me on each level, but then also cheat keys to make sure that the combo counter is working
     as intended so that if the player gets up to the correct number of hits the blocks will break correctly.
 
-6. I've already mentioned it before but the things that is unique I intend to put into the game is that combo counter of
+6.                                              *** EDITED BELOW ***
+    I've already mentioned it before but the things that is unique I intend to put into the game is that combo counter of
     continuous bounces that will be hard to hard to keep up but as the player gets a higher and higher combo they will
     get not only significantly more points but also blocks will break faster. I think that this is substantial because
     it adds another layer of skill into the game of breakout which is fairly linear normally.
+                                                *** EDITED BELOW ***
+
+
+*EDIT - I'm going to be changing the idea of a combo counter because after thinking about the mechanics of the game,
+    there may be some blocks at the end of a game that just cannot be broken if they are the last blocks. Instead I think
+    it may be more realistic to instead create moving blocks along with static blocks. My main focus was to make my game a
+    more skill focused game and I think that moving blocks can help to create that. What I will do is make it so that as the
+    levels increase, I will make there be more and more moving blocks that move faster as well.
