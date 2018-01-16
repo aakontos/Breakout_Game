@@ -10,8 +10,8 @@
     the ball bouncing as many times as more holes will open up in the bottom layer of blocks.
 
 3. There will be blocks that break instantly, some that break after being hit multiple times, with the number of hits
-    to break the block on the block itself, and then some blocks that will break with a continuous string of hits
-    (there will be a combo counter in the corner that will let the player know how close they are.
+    to break the block on the block itself, some blocks will be unbreakable making the player have to think of how to
+    get around it, and then finally there will be moving blocks
 
 4. I want to create a multiple ball power-up, one that makes the paddle double in size, one that makes the paddle bounce
     the ball faster than normal, and then one that makes the bottom of the screen not drop the ball for a little bit of

@@ -1,3 +1,4 @@
+import java.security.Key;
 import java.util.*;
 import javafx.scene.text.*;
 import javafx.animation.KeyFrame;
@@ -25,10 +26,7 @@ public class Breakout extends Application {
     public static final Paint BACKGROUND = Color.LAVENDER;
     public static final Paint HIGHLIGHT = Color.BLUE;
     public static final String PADDLE_IMG = "images/paddle.gif";
-    public static final String BALL_IMG = "images/ball.gif";
     public static final String BACKGROUND_IMG = "";
-    public static int BALL_VEL_X = 30;
-    public static int BALL_VEL_Y = 30;
     public static final int FPS = 60;
 
 
@@ -36,6 +34,24 @@ public class Breakout extends Application {
     private Scene myScene;
     private ImageView myPaddle;
     private Ball myBall;
+    private int ball_speed;
+    private Bricks bricks;
+    private Text winner;
+    private Text loser;
+    private Text lives_left;
+    private Text current_level;
+    private Text start_game;
+    private Timeline animation;
+
+
+
+
+    @Override
+    public void start (Stage stage) {
+
+    }
+
+    private void handleKeyInput(KeyCode code, Group root, Stage stage, )
 
 
 }
