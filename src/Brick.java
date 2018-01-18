@@ -30,10 +30,10 @@ public class Brick extends Breakout {
         WIDTH = width;
         hits_to_break = num_hits;
         powerup_brick = has_powerup;
-        Image img_brick = new Image(getClass().getClassLoader().getResourceAsStream(brickType)); //Need to adjust based on different bricks
+        Image img_brick = new Image(getClass().getClassLoader().getResourceAsStream(brickType+"_brick.gif")); //Need to adjust based on different bricks
         brick = new ImageView(img_brick);
-        brick.setFitWidth(); // i need to read up on setFitWidth and Height
-        brick.setFitHeight();// ^^^
+        brick.setFitWidth(WIDTH); //
+        brick.setFitHeight(HEIGHT);//
     }
 
     /**
@@ -82,6 +82,10 @@ public class Brick extends Breakout {
         this.brick.setY(y);
     }
 
+    /**
+     * method to copy bricks for placing them into an ArrayList
+     * @return
+     */
     public Brick copy() {
         return new Brick(this.brickType, this.HEIGHT, this.WIDTH, this.hits_to_break, this.powerup_brick);
     }

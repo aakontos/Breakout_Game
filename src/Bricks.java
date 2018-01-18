@@ -7,8 +7,8 @@ import java.util.Iterator;
  */
 
 public class Bricks extends Breakout {
-    private int WIDTH = 30;
-    private int HEIGHT = 20;
+    private int brick_width = 30;
+    private int brick_height = 20;
     private ArrayList<Brick> all_bricks;
     private int normal_HTB = 1;
     private int strong_HTB = 2;
@@ -18,17 +18,19 @@ public class Bricks extends Breakout {
     public ArrayList<Brick> create_bricks (int width, int height, int current_level, ArrayList<Brick> my_bricks){
         all_bricks = new ArrayList<Brick>();
         if (current_level == 1) {
-            create_brick_rows(my_bricks, new Normal_Brick("normal", HEIGHT, WIDTH, normal_HTB, false), 8, );
+            //create_brick_rows() Create the brick rows and figure out math for placement
         }
+        return all_bricks;
     }
 
     /**
      * Create a single row of bricks
-     * @param my_bricks
-     * @param start
-     * @param length
-     * @param width
-     * @param height
+     *
+     * @param my_bricks = arrayList of bricks
+     * @param start = placeholder brick to duplicate and place over and over
+     * @param length = number of bricks per row
+     * @param width = width of specific brick
+     * @param height = height of specific brick
      */
 
     public void create_bricks(ArrayList<Brick> my_bricks, Brick start, int length, double width, double height) {
@@ -41,6 +43,8 @@ public class Bricks extends Breakout {
 
     /**
      * Create all of the rows of bricks using the create_bricks method
+     *
+     *
      * @param my_bricks
      * @param start
      * @param length
