@@ -39,8 +39,8 @@ public class Ball extends Breakout {
     public Ball create_ball(ImageView myImage, int speed) {
         Image image = new Image(getClass().getClassLoader().getResourceAsStream(BALL_IMG));
         my_ball = new Ball (image, speed);
-        //my_ball.img_view.setFitHeight();
-        //my_ball.img_view.setFitWidth();
+        my_ball.img_view.setFitHeight();
+        my_ball.img_view.setFitWidth();
         //Create method to set ball in middle and figure out background image to figure out the ball's location
         return my_ball;
     }
@@ -88,6 +88,8 @@ public class Ball extends Breakout {
     /**
      * functions to adjust position of ball and check for collisions on walls, bricks, & paddle
      */
+
+    public
 
 
 

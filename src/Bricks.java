@@ -1,85 +1,101 @@
-import javafx.scene.image.ImageView;
-import javafx.scene.image.Image;
-
-//Class to specify generic brick
+import java.lang.reflect.Array;
+import java.util.*;
+import java.util.Iterator;
 
 /**
- * Class to manage the properties of generic bricks
+ * HTB will be used as an abbreviation for Hits To Break
  */
 
 public class Bricks extends Breakout {
-    private int WIDTH;
-    private int HEIGHT;
-    private int hits_to_break;
-    private boolean powerup_brick;
-    private String brickType;
-    private ImageView brick;
+    private int WIDTH = 30;
+    private int HEIGHT = 20;
+    private ArrayList<Brick> all_bricks;
+    private int normal_HTB = 1;
+    private int strong_HTB = 2;
+    private int unbreakable_HTB = 999;
+
+
+    public ArrayList<Brick> create_bricks (int width, int height, int current_level, ArrayList<Brick> my_bricks){
+        all_bricks = new ArrayList<Brick>();
+        if (current_level == 1) {
+            create_brick_rows(my_bricks, new Normal_Brick("normal", HEIGHT, WIDTH, normal_HTB, false), 8, );
+        }
+    }
 
     /**
-     * Constructor for the generic brick
-     * @param brick_type
-     * @param height
+     * Create a single row of bricks
+     * @param my_bricks
+     * @param start
+     * @param length
      * @param width
-     * @param num_hits
-     * @param has_powerup
+     * @param height
      */
 
-    public Bricks(String brick_type, int height, int width, int num_hits, boolean has_powerup) {
-        brickType = brick_type;
-        HEIGHT = height;
-        WIDTH = width;
-        hits_to_break = num_hits;
-        powerup_brick = has_powerup;
-        Image img_brick = new Image(getClass().getClassLoader().getResourceAsStream(brickType)); //Need to adjust based on different bricks
-        brick = new ImageView(img_brick);
-        brick.setFitWidth(); // i need to read up on setFitWidth and Height
-        brick.setFitHeight();// ^^^
+    public void create_bricks(ArrayList<Brick> my_bricks, Brick start, int length, double width, double height) {
+        for (int j = 0; j < length; j++) {
+            Brick dup = start.copy();
+            dup.place_brick(width * j, height*j);
+            my_bricks.add(dup);
+        }
     }
 
     /**
-     * For the remainder of this section any variable with BHTB will stand for "brick hits to break"
+     * Create all of the rows of bricks using the create_bricks method
+     * @param my_bricks
+     * @param start
+     * @param length
+     * @param width
+     * @param height
+     * @param max_rows
      */
 
-    /**
-     * methods to check and return existing brick values
-     */
-
-    public int check_BHTB() {
-        return this.hits_to_break;
-    }
-
-    public String check_brick_type() {
-        return this.brickType;
-    }
-
-    public boolean brick_has_powerup() {
-        return this.powerup_brick;
-    }
-
-    public ImageView get_brick_imageview() {
-        return this.brick;
-    }
-
-
-    /**
-     * methods to adjust existing brick values
-     */
-
-    public void reduce_BHTB() {
-        this.hits_to_break--;
-    }
-
-    public void add_powerup() {
-        this.powerup_brick = true;
+    public void create_brick_rows(ArrayList<Brick> my_bricks, Brick start, int length, double width, double height, int max_rows) {
+        for (int row = 0; row < max_rows; row++) {
+            height = height - 20; //need to maybe mess around with this number depending on the size of the brick image
+            create_bricks(my_bricks, start, length, width, height);
+        }
     }
 
     /**
-     * method to place bricks
+     * remove brick once it has been destroyed
+     * @param iterator
+     * @param brick
      */
 
-    public void place_brick(double x, double y) {
-        this.brick.setX(x);
-        this.brick.setY(y);
+    public void remove_bricks(Iterator<Brick> iterator, Brick brick) {
+        brick.get_brick_imageview().setImage(null);
+        iterator.remove();
     }
+
+
+    /**
+     * Method that updates the existing bricks in the game
+     * @param my_ball
+     * @return
+     */
+
+    public ArrayList<Brick> check_bricks(Ball my_ball) {
+        Iterator<Brick> check = all_bricks.iterator();
+        while (check.hasNext()) {
+            Brick brick = check.next();
+            if (brick.get_brick_imageview().getBoundsInParent().intersects(my_ball.get_ball_imageview().getBoundsInParent())) {
+                if (my_ball.get_ball_imageview().getBoundsInParent().getMinX() >= brick.get_brick_imageview().getBoundsInParent().getMinX()
+                        && my_ball.get_ball_imageview().getBoundsInParent().getMaxX() <= brick.get_brick_imageview().getBoundsInParent().getMaxX()) {
+                    my_ball.change_x_direction();
+                }
+                brick.reduce_BHTB();
+                if (brick.check_BHTB() <= 0) {
+                    remove_bricks(check, brick);
+                }
+                else {
+                    my_ball.change_y_direction();
+                }
+            }
+        }
+        return all_bricks;
+    }
+
+
+
 
 }

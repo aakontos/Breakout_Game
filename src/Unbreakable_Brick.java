@@ -1,9 +1,8 @@
-public class Strong_Brick extends Brick {
-
+public class Unbreakable_Brick extends Brick {
 
     /**
-     * Class that creates a Strong_Brick using
-     * the super() method in java to invoke the parent class Brick
+     * Class to create an unbreakable brick by calling
+     * the super() method which invokes the parent class Brick
      *
      * The values for the brick will be specified in Breakout.java
      *
@@ -14,8 +13,7 @@ public class Strong_Brick extends Brick {
      * @param has_powerup
      */
 
-    public Strong_Brick(String brick_type, int height, int width, int num_hits, boolean has_powerup) {
+    public Unbreakable_Brick(String brick_type, int height, int width, int num_hits, boolean has_powerup) {
         super(brick_type, height, width, num_hits, has_powerup);
     }
-
 }

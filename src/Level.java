@@ -26,6 +26,7 @@ public class Level extends Breakout {
      * Constructor for the level
      * @param level
      */
+
     public Level(int level) {
         level_num = level;
     }
