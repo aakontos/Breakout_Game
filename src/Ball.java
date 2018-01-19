@@ -110,7 +110,7 @@ public class Ball extends Breakout {
             X_DIR = X_DIR * -1;
         }
         //check if the ball hits the top of the screen or goes out of the bottom
-        else if (this.img_view.getBoundsInParent().getMinY() <= 0 && my_bricks.size() <= number_unbreakable_bricks(my_bricks)) {
+        else if (my_bricks.size() <= number_unbreakable_bricks(my_bricks)) {
             animation.stop();
             Level level = new Level(current_level);
             level.change_level(stage, ball_speed, winner, animation);

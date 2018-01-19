@@ -92,7 +92,7 @@ public class Breakout extends Application {
         text.setY(y);
         text.setFont(Font.font("Impact", font_size));
         text.setText(message);
-        text.setFill(Color.BLACK);
+        text.setFill(Color.DARKGREEN);
         return text;
     }
 
@@ -111,16 +111,16 @@ public class Breakout extends Application {
         Level level = new Level(current_level);
         //Create the powerups
         lives_left = create_text(lives_left, 12, 590, "Lives - " + my_ball.get_num_lives(), 14);
-        winner = create_text(winner, X_SIZE / 4, Y_SIZE / 4, "Congratulations! You win!", 20);
+        winner = create_text(winner, X_SIZE / 4, Y_SIZE / 4, "Congratulations! You win!", 28);
         loser = create_text(loser, X_SIZE / 4, Y_SIZE / 4, "Sorry, better luck next time!", 20);
         currentLevel = create_text(currentLevel, 350, 590, "Level " +level.return_level_num(), 14);
-        start_game = create_text(start_game, 40, Y_SIZE / 4, "Push 'Spacebar' to start the game!", 24);
-        debug_menu = create_text(debug_menu, 90, Y_SIZE / 4 + 30, "Press 'D' for the debug menu options", 16);
-        debug_options = create_text(debug_options, 90, Y_SIZE / 4 + 30, "Press 'L' to add a life" +"\n" +
+        start_game = create_text(start_game, 40, Y_SIZE / 2 + 100, "Push 'Spacebar' to start the game!", 24);
+        debug_menu = create_text(debug_menu, 90, Y_SIZE / 2 + 130, "Press 'D' for the debug menu options", 16);
+        debug_options = create_text(debug_options, 90, Y_SIZE / 2 + 130, "Press 'L' to add a life" +"\n" +
                 "Press N to skip to the next level", 16);
+        debug_options.setVisible(false);
         winner.setVisible(false);
         loser.setVisible(false);
-        debug_options.setVisible(false);
         root.getChildren().add(my_paddle);
         root.getChildren().add(my_ball.get_ball_imageview());
         for (int x = 0; x < my_bricks.size(); x++) {root.getChildren().add(my_bricks.get(x).get_brick_imageview());}
@@ -149,8 +149,8 @@ public class Breakout extends Application {
             System.exit(0);
         }
         else if (code == KeyCode.D) {
-            root.getChildren().remove(debug_menu);
             debug_options.setVisible(true);
+            root.getChildren().remove(debug_menu);
         }
         else if (code == KeyCode.L) {
             my_ball.add_life();
