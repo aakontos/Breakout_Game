@@ -14,6 +14,7 @@ public class Brick extends Breakout {
     private boolean powerup_brick;
     private String brickType;
     private ImageView brick;
+    private int BRICK_SPEED;
 
     /**
      * Constructor for the generic brick
@@ -24,12 +25,13 @@ public class Brick extends Breakout {
      * @param has_powerup
      */
 
-    public Brick(String brick_type, int height, int width, int num_hits, boolean has_powerup) {
+    public Brick(String brick_type, int height, int width, int num_hits, boolean has_powerup, int brick_speed) {
         brickType = brick_type;
         HEIGHT = height;
         WIDTH = width;
         hits_to_break = num_hits;
         powerup_brick = has_powerup;
+        BRICK_SPEED = brick_speed;
         Image img_brick = new Image(getClass().getClassLoader().getResourceAsStream("images/"+brickType+"_brick.gif")); //Need to adjust based on different bricks
         brick = new ImageView(img_brick);
         brick.setFitWidth(WIDTH); //
@@ -83,11 +85,27 @@ public class Brick extends Breakout {
     }
 
     /**
+     * Methods to check collision for the moving brick
+     */
+
+    public Brick check_brick_collision(double elapsedTime) {
+        if(this.get_brick_imageview().getBoundsInParent().getMaxX() >= X_SIZE || this.get_brick_imageview().getX() <= 0) {
+            this.BRICK_SPEED = this.BRICK_SPEED * -1;
+        }
+        set_brick_pos(elapsedTime);
+        return this;
+    }
+
+    public void set_brick_pos(double elapsedTime) {
+        this.get_brick_imageview().setX(this.get_brick_imageview().getX() + this.BRICK_SPEED * elapsedTime);
+    }
+
+    /**
      * method to copy bricks for placing them into an ArrayList
      * @return
      */
     public Brick copy() {
-        return new Brick(this.brickType, this.HEIGHT, this.WIDTH, this.hits_to_break, this.powerup_brick);
+        return new Brick(this.brickType, this.HEIGHT, this.WIDTH, this.hits_to_break, this.powerup_brick, this.BRICK_SPEED);
     }
 
 }

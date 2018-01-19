@@ -72,6 +72,11 @@ public class Breakout extends Application {
         my_ball = my_ball.my_ball_position(elapsedTime, my_paddle, animation, winner, loser, my_bricks, current_level, stage, ball_speed);
         lives_left.setText("Lives - " + my_ball.get_num_lives());
         my_bricks = bricks.check_bricks(my_ball);
+        for (Brick b : my_bricks) {                 //This is most likely incredibly wasteful looking through all of the bricks...
+            if (b.check_brick_type() == "moving") {
+                b.check_brick_collision(elapsedTime);
+            }
+        }
     }
 
     public void setup_animation(Stage stage, int current_level) {

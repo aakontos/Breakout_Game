@@ -12,29 +12,50 @@ public class Bricks extends Breakout {
     private ArrayList<Brick> all_bricks;
     private int normal_HTB = 1;
     private int strong_HTB = 2;
+    private int moving_HTB = 4;
     private int unbreakable_HTB = 999;
 
 
     public ArrayList<Brick> create_bricks(int width, int height, int current_level){
         all_bricks = new ArrayList<Brick>();
         if (current_level == 1) {
-            create_brick_rows(all_bricks, new Normal_Brick("normal", brick_height, brick_width, normal_HTB, false),
+            create_brick_rows(all_bricks, new Normal_Brick("normal", brick_height, brick_width, normal_HTB, false, 0),
             8, 28, 180, 3);
-            create_brick_rows(all_bricks, new Strong_Brick("strong", brick_height, brick_width, strong_HTB, false),
+            create_brick_rows(all_bricks, new Strong_Brick("strong", brick_height, brick_width, strong_HTB, false, 0),
                     8, 28, 100, 1);
-            create_brick_rows(all_bricks, new Normal_Brick("normal", brick_height, brick_width, normal_HTB, false),
+            create_brick_rows(all_bricks, new Normal_Brick("normal", brick_height, brick_width, normal_HTB, false, 0),
                     8, 28, 70, 1);
         }
         else if (current_level == 2) {
-            create_brick_rows(all_bricks, new Normal_Brick("normal", brick_height, brick_width, normal_HTB, false),
+            create_brick_rows(all_bricks, new Normal_Brick("normal", brick_height, brick_width, normal_HTB, false, 0),
                     8, 28, 180, 2);
-            create_brick_row(all_bricks, new Strong_Brick("strong", brick_height, brick_width, strong_HTB, false),
+            create_brick_row(all_bricks, new Strong_Brick("strong", brick_height, brick_width, strong_HTB, false, 0),
                     5, 28, 100, 1, 79, 0);
-            create_brick_row(all_bricks, new Unbreakable_Brick("unbreakable", brick_height, brick_width, unbreakable_HTB, false),
+            create_brick_row(all_bricks, new Unbreakable_Brick("unbreakable", brick_height, brick_width, unbreakable_HTB, false, 0),
                     3, 28, 185, 1, 158, 0);
-            create_brick_rows(all_bricks, new Normal_Brick("normal", brick_height, brick_width, normal_HTB, false),
+            create_brick_rows(all_bricks, new Normal_Brick("normal", brick_height, brick_width, normal_HTB, false, 0),
                     8, 28, 95, 2);
 
+        }
+        else if (current_level == 3) {
+            create_brick_row(all_bricks, new Moving_Brick("moving", brick_height, brick_width, moving_HTB, false, 100),
+                    1, 28, 300, 1, 0, 0);
+            create_brick_row(all_bricks, new Moving_Brick("moving", brick_height, brick_width, moving_HTB, false, 120),
+                    1, 200, 270, 1, 0, 0);
+            create_brick_row(all_bricks, new Moving_Brick("moving", brick_height, brick_width, moving_HTB, false, 140),
+                    1, 350, 240, 1, 0, 0);
+            create_brick_row(all_bricks, new Moving_Brick("moving", brick_height, brick_width, strong_HTB, false, 500),
+                    1, 200, 15, 1, 0, 0);
+            create_brick_rows(all_bricks, new Strong_Brick("strong", brick_height, brick_width, strong_HTB, false, 0),
+                    8, 28, 100, 1);
+            create_brick_row(all_bricks, new Normal_Brick("normal", brick_height, brick_width, normal_HTB, false, 0),
+                    8, 28, 45, 1, 45, 0);
+            create_brick_row(all_bricks, new Strong_Brick("strong", brick_height, brick_width, strong_HTB, false, 0),
+                    5, 28, 105, 1, 79, 0);
+            create_brick_row(all_bricks, new Unbreakable_Brick("unbreakable", brick_height, brick_width, unbreakable_HTB, false, 0),
+                    3, 28, 135, 1, 158, 0);
+            create_brick_rows(all_bricks, new Normal_Brick("normal", brick_height, brick_width, normal_HTB, false, 0),
+                    8, 28, 210, 2);
         }
         return all_bricks;
     }
