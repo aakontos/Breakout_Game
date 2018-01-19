@@ -39,10 +39,14 @@ public class Level extends Breakout {
         return this.level_num;
     }
 
-    /**
-     * method to adjust existing level values (level number)
-     */
 
+    /**
+     * method to change levels when all blocks are destroyed and also to end the game when the 3 levels have been beaten
+     * @param stage
+     * @param ball_speed
+     * @param winner
+     * @param animation
+     */
     public void change_level(Stage stage, int ball_speed, Text winner, Timeline animation) {
         level_num++;
         ball_speed = (int) (ball_speed * SPEED_GROWTH);
@@ -52,8 +56,12 @@ public class Level extends Breakout {
             return;
         }
         Breakout new_game = new Breakout();
+        Scene scene = new_game.setup_game(X_SIZE, Y_SIZE, BACKGROUND, stage, level_num, ball_speed);
+        stage.setScene(scene);
+        stage.setTitle(TITLE);
+        stage.show();
+        new_game.setup_animation(stage, level_num);
         //set up new level creating new scene, new title, etc.
-        //will need to finish other classes before we can implement this here.
 
 
     }

@@ -76,10 +76,12 @@ public class Ball extends Breakout {
 
     public void change_x_direction() {
         this.X_DIR = this.X_DIR * -1;
+        this.set_ball_pos(SECOND_DELAY);
     }
 
     public void change_y_direction() {
         this.Y_DIR = this.Y_DIR * -1;
+        this.set_ball_pos(SECOND_DELAY);
     }
 
     public void add_life() {
@@ -103,12 +105,12 @@ public class Ball extends Breakout {
      */
     public Ball my_ball_position(double elapsedTime, ImageView my_paddle, Timeline animation, Text winner, Text loser,
                                  ArrayList<Brick> my_bricks, int current_level, Stage stage, int ball_speed) {
-        //check if ball hits edges of the screen
+        //check if ball hits sides of the screen
         if (this.img_view.getBoundsInParent().getMaxX() >= X_SIZE || this.img_view.getX() <= 0) {
-            change_x_direction();
+            X_DIR = X_DIR * -1;
         }
         //check if the ball hits the top of the screen or goes out of the bottom
-        if (this.img_view.getBoundsInParent().getMinY() <= 0 && my_bricks.size() <= number_unbreakable_bricks(my_bricks)) {
+        else if (this.img_view.getBoundsInParent().getMinY() <= 0 && my_bricks.size() <= number_unbreakable_bricks(my_bricks)) {
             animation.stop();
             Level level = new Level(current_level);
             level.change_level(stage, ball_speed, winner, animation);
@@ -126,7 +128,7 @@ public class Ball extends Breakout {
             }
         }
         else if (this.img_view.getY() <= 0) {
-            change_y_direction();
+            Y_DIR = Y_DIR * -1;
         }
 
         check_paddle_collision(my_paddle);
@@ -170,8 +172,8 @@ public class Ball extends Breakout {
      * @param my_paddle
      */
     private void reset_paddle(ImageView my_paddle) {
-        my_paddle.setX(X_SIZE / 2 - my_paddle.getBoundsInLocal().getWidth()/2); //center the middle of the paddle in the middle of the frame and
-        my_paddle.setY(Y_SIZE - 10); // move paddle up a little bit
+        my_paddle.setX(X_SIZE / 2 - my_paddle.getBoundsInLocal().getWidth() / 2); //center the middle of the paddle in the middle of the frame and
+        my_paddle.setY(Y_SIZE - 60); // move paddle up a little bit
     }
 
     /**

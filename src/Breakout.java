@@ -136,6 +136,7 @@ public class Breakout extends Application {
         if (code == KeyCode.SPACE) {
             animation.play();
             root.getChildren().remove(start_game);
+            root.getChildren().remove(debug_menu);
             root.getChildren().remove(debug_options);
         }
         else if (code == KeyCode.ESCAPE) {

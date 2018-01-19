@@ -7,7 +7,7 @@ import java.util.Iterator;
  */
 
 public class Bricks extends Breakout {
-    private int brick_width = 30;
+    private int brick_width = 40;
     private int brick_height = 20;
     private ArrayList<Brick> all_bricks;
     private int normal_HTB = 1;
@@ -18,7 +18,23 @@ public class Bricks extends Breakout {
     public ArrayList<Brick> create_bricks(int width, int height, int current_level){
         all_bricks = new ArrayList<Brick>();
         if (current_level == 1) {
-            //create_brick_rows() Create the brick rows and figure out math for placement
+            create_brick_rows(all_bricks, new Normal_Brick("normal", brick_height, brick_width, normal_HTB, false),
+            8, 28, 180, 3);
+            create_brick_rows(all_bricks, new Strong_Brick("strong", brick_height, brick_width, strong_HTB, false),
+                    8, 28, 100, 1);
+            create_brick_rows(all_bricks, new Normal_Brick("normal", brick_height, brick_width, normal_HTB, false),
+                    8, 28, 70, 1);
+        }
+        else if (current_level == 2) {
+            create_brick_rows(all_bricks, new Normal_Brick("normal", brick_height, brick_width, normal_HTB, false),
+                    8, 28, 180, 2);
+            create_brick_row(all_bricks, new Strong_Brick("strong", brick_height, brick_width, strong_HTB, false),
+                    5, 28, 100, 1, 79, 0);
+            create_brick_row(all_bricks, new Unbreakable_Brick("unbreakable", brick_height, brick_width, unbreakable_HTB, false),
+                    3, 28, 185, 1, 158, 0);
+            create_brick_rows(all_bricks, new Normal_Brick("normal", brick_height, brick_width, normal_HTB, false),
+                    8, 28, 95, 2);
+
         }
         return all_bricks;
     }
@@ -33,10 +49,10 @@ public class Bricks extends Breakout {
      * @param height = height of specific brick
      */
 
-    public void create_brick_row(ArrayList<Brick> my_bricks, Brick start, int length, double width, double height) {
+    public void create_brick_row(ArrayList<Brick> my_bricks, Brick start, int length, double width, double height, int direction, int horiz_gap, int vert_gap) {
         for (int j = 0; j < length; j++) {
             Brick dup = start.copy();
-            dup.place_brick(width * j, height*j);
+            dup.place_brick(width + direction * j * horiz_gap, height + j * vert_gap);
             my_bricks.add(dup);
         }
     }
@@ -55,8 +71,8 @@ public class Bricks extends Breakout {
 
     public void create_brick_rows(ArrayList<Brick> my_bricks, Brick start, int length, double width, double height, int max_rows) {
         for (int row = 0; row < max_rows; row++) {
-            height = height - 20; //need to maybe mess around with this number depending on the size of the brick image
-            create_brick_row(my_bricks, start, length, width, height);
+            height = height - 25; //need to maybe mess around with this number depending on the size of the brick image
+            create_brick_row(my_bricks, start, length, width, height, 1, 45, 0);
         }
     }
 

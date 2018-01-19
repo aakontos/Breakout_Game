@@ -30,7 +30,7 @@ public class Brick extends Breakout {
         WIDTH = width;
         hits_to_break = num_hits;
         powerup_brick = has_powerup;
-        Image img_brick = new Image(getClass().getClassLoader().getResourceAsStream(brickType+"_brick.gif")); //Need to adjust based on different bricks
+        Image img_brick = new Image(getClass().getClassLoader().getResourceAsStream("images/"+brickType+"_brick.gif")); //Need to adjust based on different bricks
         brick = new ImageView(img_brick);
         brick.setFitWidth(WIDTH); //
         brick.setFitHeight(HEIGHT);//
