@@ -15,7 +15,7 @@ public class Bricks extends Breakout {
     private int unbreakable_HTB = 999;
 
 
-    public ArrayList<Brick> create_bricks (int width, int height, int current_level, ArrayList<Brick> my_bricks){
+    public ArrayList<Brick> create_bricks(int width, int height, int current_level){
         all_bricks = new ArrayList<Brick>();
         if (current_level == 1) {
             //create_brick_rows() Create the brick rows and figure out math for placement
@@ -33,7 +33,7 @@ public class Bricks extends Breakout {
      * @param height = height of specific brick
      */
 
-    public void create_bricks(ArrayList<Brick> my_bricks, Brick start, int length, double width, double height) {
+    public void create_brick_row(ArrayList<Brick> my_bricks, Brick start, int length, double width, double height) {
         for (int j = 0; j < length; j++) {
             Brick dup = start.copy();
             dup.place_brick(width * j, height*j);
@@ -56,7 +56,7 @@ public class Bricks extends Breakout {
     public void create_brick_rows(ArrayList<Brick> my_bricks, Brick start, int length, double width, double height, int max_rows) {
         for (int row = 0; row < max_rows; row++) {
             height = height - 20; //need to maybe mess around with this number depending on the size of the brick image
-            create_bricks(my_bricks, start, length, width, height);
+            create_brick_row(my_bricks, start, length, width, height);
         }
     }
 

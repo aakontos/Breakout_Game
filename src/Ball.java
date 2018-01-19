@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 
 public class Ball extends Breakout {
-    public static final String BALL_IMG = "images/ball.gif"; //CHANGE LATER
+    public static final String BALL_IMG = "images/ball.png"; //CHANGE LATER
     private Integer num_lives = 3;
     private double X_DIR;
     private double Y_DIR;
@@ -41,6 +41,7 @@ public class Ball extends Breakout {
         my_ball = new Ball (image, speed);
         my_ball.img_view.setFitHeight(20);
         my_ball.img_view.setFitWidth(20);
+        my_ball.reset_ball();
         //Create method to set ball in middle and figure out background image to figure out the ball's location
         return my_ball;
     }
@@ -178,7 +179,7 @@ public class Ball extends Breakout {
      */
     private void reset_ball() {
         this.img_view.setX(X_SIZE / 2 - this.img_view.getBoundsInLocal().getWidth() / 2);
-        this.img_view.setY(Y_SIZE - this.img_view.getBoundsInLocal().getWidth() - 10);
+        this.img_view.setY(Y_SIZE - this.img_view.getBoundsInLocal().getWidth() - 70);
     }
 
     /**
@@ -186,7 +187,9 @@ public class Ball extends Breakout {
      * @param my_paddle
      */
     private void check_paddle_collision(ImageView my_paddle) {
-
+        if (this.img_view.getBoundsInLocal().intersects(my_paddle.getBoundsInParent())) {
+            change_y_direction();
+        }
     }
 
 
