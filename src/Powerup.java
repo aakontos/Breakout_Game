@@ -5,7 +5,6 @@ import javafx.scene.Group;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Timer;
 import java.util.Collections;
 
 
@@ -15,7 +14,6 @@ public class Powerup extends Breakout {
     public static final int brick_height = 20;
     public static final String POWERUP_IMG = "images/powerup.png";
     private Brick brick;
-    private Timer timer;
     private String powerup_type;
     private ImageView powerup;
     private boolean can_collect;
@@ -66,7 +64,7 @@ public class Powerup extends Breakout {
     }
 
     public void slow_down(Ball my_ball) {
-        my_ball.change_ball_speed(125);
+        my_ball.change_ball_speed(80);
     }
 
     public void big_paddle(ImageView my_paddle) {
