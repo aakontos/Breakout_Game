@@ -21,8 +21,7 @@ public class Breakout extends Application {
     public static final int FPS = 60;
     public static final int MS_DELAY = 1000 / FPS;
     public static final double SECOND_DELAY = 1.0 / FPS;
-    public static final Paint BACKGROUND = Color.LAVENDER;
-    public static final Paint HIGHLIGHT = Color.BLUE;
+    public static final Paint BACKGROUND = Color.ANTIQUEWHITE;
     public static final String PADDLE_IMG = "images/paddle.gif";
     public static final int start_speed = 250;
     public static final int INPUT_SPEED = 25;

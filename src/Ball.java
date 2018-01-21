@@ -29,8 +29,9 @@ public class Ball extends Breakout {
      */
     public Ball(Image img, int speed) {
         Random rand = new Random();
-        X_DIR= rand.nextDouble();
-        Y_DIR = rand.nextDouble();
+        int x_multiplier = (rand.nextInt() % 2 == 0 ) ? 1 : -1; //randomly choose between 1 & -1 to decide if the ball will start going left or right
+        X_DIR= rand.nextDouble() * x_multiplier;
+        Y_DIR = rand.nextDouble(); // no multiplier for the y_dir because I don't want the ball to go down
         img_view = new ImageView(img);
         SPEED = speed;
     }
@@ -52,13 +53,7 @@ public class Ball extends Breakout {
      * functions to return existing values of the ball
      */
 
-    public double get_x_direction() {
-        return this.X_DIR;
-    }
 
-    public double get_y_direction() {
-        return this.Y_DIR;
-    }
 
     public ImageView get_ball_imageview() {
         return this.img_view;

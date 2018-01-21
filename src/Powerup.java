@@ -10,8 +10,6 @@ import java.util.Collections;
 
 
 public class Powerup extends Breakout {
-    public static final int brick_width = 40;
-    public static final int brick_height = 20;
     public static final String POWERUP_IMG = "images/powerup.png";
     private Brick brick;
     private String powerup_type;

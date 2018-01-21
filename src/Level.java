@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 
 public class Level extends Breakout {
     public static final String TITLE = "Breakout Game";
-    public static final int SIZE = 400;
     public static final Paint BACKGROUND = Color.ANTIQUEWHITE;
     public static final double SPEED_GROWTH = 1.2; //may be too fast, not sure just test later once its working
     public int max_level = 3;
@@ -49,7 +48,6 @@ public class Level extends Breakout {
      */
     public void change_level(Stage stage, int ball_speed, Text winner, Timeline animation) {
         level_num++;
-        ball_speed = (int) (ball_speed * SPEED_GROWTH);
         if (level_num > max_level) {
             animation.stop();
             winner.setVisible(true);
