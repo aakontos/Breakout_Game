@@ -16,8 +16,7 @@
 4. I want to create a multiple ball power-up, one that makes the paddle double in size, and one that makes the paddle bounce
     the ball faster than normal,
 
-5. I'll have cheat keys to put me on each level, but then also cheat keys to make sure that the combo counter is working
-    as intended so that if the player gets up to the correct number of hits the blocks will break correctly.
+5. I'll have cheat keys to put me on each level, but then also cheat keys to add lives and to exit the game.
 
 6.                                              *** EDITED BELOW ***
     I've already mentioned it before but the things that is unique I intend to put into the game is that combo counter of

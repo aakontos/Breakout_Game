@@ -45,6 +45,7 @@ public class Powerup extends Breakout {
         all_powerups.add("big_paddle");
         all_powerups.add("speed_up");
         all_powerups.add("slow_down");
+        all_powerups.add("extra_life");
         int choose = rand.nextInt(2);
         return all_powerups.get(choose);
     }
@@ -58,6 +59,9 @@ public class Powerup extends Breakout {
         }
         else if (powerup_type == "speed_up") {
             speed_up(my_ball);
+        }
+        else if (powerup_type == "extra_life") {
+            extra_life(my_ball);
         }
     }
 
@@ -76,6 +80,10 @@ public class Powerup extends Breakout {
 
     public void speed_up(Ball my_ball) {
         my_ball.change_ball_speed(350);
+    }
+
+    public void extra_life(Ball my_ball) {
+        my_ball.add_life();
     }
 
     public ArrayList<Powerup> create_powerups(ArrayList<Brick> my_bricks){
