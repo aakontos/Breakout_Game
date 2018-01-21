@@ -42,7 +42,9 @@ public class Breakout extends Application {
     private Text debug_menu;
     private Text debug_options;
     private Timeline animation;
+    private Powerup power;
     private ArrayList<Brick> my_bricks;
+    private ArrayList<Powerup> my_powerups;
 
 
 
@@ -72,6 +74,7 @@ public class Breakout extends Application {
         my_ball = my_ball.my_ball_position(elapsedTime, my_paddle, animation, winner, loser, my_bricks, current_level, stage, ball_speed);
         lives_left.setText("Lives - " + my_ball.get_num_lives());
         my_bricks = bricks.check_bricks(my_ball);
+        my_powerups = power.check_powerup_position(elapsedTime, my_powerups, my_bricks, my_paddle, my_ball);
         for (Brick b : my_bricks) {                 //This is most likely incredibly wasteful looking through all of the bricks...
             if (b.check_brick_type() == "moving") {
                 b.check_brick_collision(elapsedTime);
@@ -110,8 +113,10 @@ public class Breakout extends Application {
         my_bricks = bricks.create_bricks(X_SIZE, Y_SIZE, current_level);
         Level level = new Level(current_level);
         //Create the powerups
+        power = new Powerup(null);
+        my_powerups = power.create_powerups(my_bricks);
         lives_left = create_text(lives_left, 12, 590, "Lives - " + my_ball.get_num_lives(), 14);
-        winner = create_text(winner, X_SIZE / 4, Y_SIZE / 4, "Congratulations! You win!", 28);
+        winner = create_text(winner, 50, Y_SIZE / 2 + 130, "Congratulations! You win!", 28);
         loser = create_text(loser, X_SIZE / 4, Y_SIZE / 4, "Sorry, better luck next time!", 20);
         currentLevel = create_text(currentLevel, 350, 590, "Level " +level.return_level_num(), 14);
         start_game = create_text(start_game, 40, Y_SIZE / 2 + 100, "Push 'Spacebar' to start the game!", 24);
@@ -124,6 +129,7 @@ public class Breakout extends Application {
         root.getChildren().add(my_paddle);
         root.getChildren().add(my_ball.get_ball_imageview());
         for (int x = 0; x < my_bricks.size(); x++) {root.getChildren().add(my_bricks.get(x).get_brick_imageview());}
+        for (int x = 0; x < my_powerups.size(); x++) {root.getChildren().add(my_powerups.get(x).get_powerup_imageview());}
         root.getChildren().add(lives_left);
         root.getChildren().add(winner);
         root.getChildren().add(loser);

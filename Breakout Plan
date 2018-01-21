@@ -13,9 +13,8 @@
     to break the block on the block itself, some blocks will be unbreakable making the player have to think of how to
     get around it, and then finally there will be moving blocks
 
-4. I want to create a multiple ball power-up, one that makes the paddle double in size, one that makes the paddle bounce
-    the ball faster than normal, and then one that makes the bottom of the screen not drop the ball for a little bit of
-    time.
+4. I want to create a multiple ball power-up, one that makes the paddle double in size, and one that makes the paddle bounce
+    the ball faster than normal,
 
 5. I'll have cheat keys to put me on each level, but then also cheat keys to make sure that the combo counter is working
     as intended so that if the player gets up to the correct number of hits the blocks will break correctly.
