@@ -35,6 +35,8 @@ public class Bricks extends Breakout {
                     3, 28, 185, 1, 158, 0);
             create_brick_rows(all_bricks, new Normal_Brick("normal", brick_height, brick_width, normal_HTB, false, 0),
                     8, 28, 95, 2);
+            create_brick_row(all_bricks, new Moving_Brick("moving", brick_height, brick_width, moving_HTB, false, 100),
+                    1, 28, 250, 1, 0, 0);
 
         }
         else if (current_level == 3) {

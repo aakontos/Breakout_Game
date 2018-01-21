@@ -63,6 +63,11 @@ public class Powerup extends Breakout {
         }
     }
 
+    /**
+     *
+     * I attempted to use a timer to make the powerups last for not as long but I couldn't figure out how to incorporate it into
+     * my entire project and so I'm leaving them as permanent powerups.
+     */
     public void slow_down(Ball my_ball) {
         my_ball.change_ball_speed(80);
     }
@@ -80,8 +85,8 @@ public class Powerup extends Breakout {
         Collections.shuffle(my_bricks);
         for (int x = 0; x < 4; x++) {
             Powerup power = new Powerup(my_bricks.get(x));
-            power.powerup.setFitWidth(15);
-            power.powerup.setFitHeight(15);
+            power.powerup.setFitWidth(20);
+            power.powerup.setFitHeight(20);
             power.powerup.setX(my_bricks.get(x).get_brick_imageview().getX());
             power.powerup.setY(my_bricks.get(x).get_brick_imageview().getY());
             power.powerup.setVisible(false);
@@ -111,6 +116,7 @@ public class Powerup extends Breakout {
                 if (p.check_powerup_collected(my_paddle)) {
                     p.can_collect = false;
                     p.activate_powerup(p.powerup_type, my_paddle, my_ball);
+                    p.get_powerup_imageview().setVisible(false);
                 }
             }
         }

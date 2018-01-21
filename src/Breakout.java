@@ -24,7 +24,7 @@ public class Breakout extends Application {
     public static final Paint BACKGROUND = Color.LAVENDER;
     public static final Paint HIGHLIGHT = Color.BLUE;
     public static final String PADDLE_IMG = "images/paddle.gif";
-    public static final int start_speed = 200;
+    public static final int start_speed = 250;
     public static final int INPUT_SPEED = 25;
 
 
@@ -60,6 +60,17 @@ public class Breakout extends Application {
         setup_animation(stage, current_level);
     }
 
+    /**
+     * Method to create an image_view of any type, will cut out repetition in defining many objects
+     * @param image_view
+     * @param width
+     * @param height
+     * @param filename
+     * @param x
+     * @param y
+     * @return
+     */
+
     public ImageView create_imageview(ImageView image_view, double width, double height, String filename, double x, double y) {
         Image image = new Image(getClass().getClassLoader().getResourceAsStream(filename));
         image_view = new ImageView(image);
@@ -70,9 +81,15 @@ public class Breakout extends Application {
         return image_view;
     }
 
+    /**
+     * step method to constantly update many moving variables
+     * @param elapsedTime
+     * @param stage
+     * @param current_level
+     */
     public void step(double elapsedTime, Stage stage, int current_level) {
         my_ball = my_ball.my_ball_position(elapsedTime, my_paddle, animation, winner, loser, my_bricks, current_level, stage, ball_speed);
-        lives_left.setText("Lives - " + my_ball.get_num_lives());
+        lives_left.setText("Lives : " + my_ball.get_num_lives());
         my_bricks = bricks.check_bricks(my_ball);
         my_powerups = power.check_powerup_position(elapsedTime, my_powerups, my_bricks, my_paddle, my_ball);
         for (Brick b : my_bricks) {                 //This is most likely incredibly wasteful looking through all of the bricks...
@@ -115,7 +132,7 @@ public class Breakout extends Application {
         //Create the powerups
         power = new Powerup(null);
         my_powerups = power.create_powerups(my_bricks);
-        lives_left = create_text(lives_left, 12, 590, "Lives - " + my_ball.get_num_lives(), 14);
+        lives_left = create_text(lives_left, 12, 590, "Lives : " + my_ball.get_num_lives(), 14);
         winner = create_text(winner, 50, Y_SIZE / 2 + 130, "Congratulations! You win!", 28);
         loser = create_text(loser, X_SIZE / 4, Y_SIZE / 4, "Sorry, better luck next time!", 20);
         currentLevel = create_text(currentLevel, 350, 590, "Level " +level.return_level_num(), 14);

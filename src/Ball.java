@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import java.util.Random;
 
 
 /**
@@ -14,7 +15,7 @@ import javafx.stage.Stage;
 
 public class Ball extends Breakout {
     public static final String BALL_IMG = "images/ball.png"; //CHANGE LATER
-    private Integer num_lives = 3;
+    private int num_lives = 3;
     private double X_DIR;
     private double Y_DIR;
     private int SPEED;
@@ -27,8 +28,9 @@ public class Ball extends Breakout {
      *  to create the ball
      */
     public Ball(Image img, int speed) {
-        X_DIR = 1;
-        Y_DIR = 1;
+        Random rand = new Random();
+        X_DIR= rand.nextDouble();
+        Y_DIR = rand.nextDouble();
         img_view = new ImageView(img);
         SPEED = speed;
     }
